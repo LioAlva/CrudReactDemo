@@ -1,5 +1,6 @@
-import React,{useState} from 'react';
+import React,{useState  , useEffect } from 'react'; // use efecct working when the page load
 import {isEmpty,size} from 'lodash'
+import { getCollection } from './actions';
 // import shortid from 'shortid'
 
 let num=0;
@@ -11,6 +12,14 @@ function App() {
   const [editMode,setEditMode] = useState(false)
   const [id, setId] = useState("")
   const [error, setError] = useState(null)
+
+useEffect(
+  () => {  
+    async () => {
+      const result = await getCollection("tasks")
+    }
+
+  },[])//ese metodo se ejecuta cuando la pagina carga , es un metodo asuncrono autoejecutable
 
   const validForm = () => {
     let isValid = true
